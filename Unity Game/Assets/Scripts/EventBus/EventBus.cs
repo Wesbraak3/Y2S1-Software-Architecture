@@ -5,7 +5,7 @@ namespace EventBus
     /// <summary>
     ///  
     /// </summary>
-    public class EventBus<T> where T: Event
+    public static class EventBus<T> where T: Event
     {
         public static event Action<T, T> OnEvent;
 

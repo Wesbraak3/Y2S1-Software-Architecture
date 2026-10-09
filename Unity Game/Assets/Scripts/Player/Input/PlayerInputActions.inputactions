@@ -1,19 +1,28 @@
 {
     "version": 1,
-    "name": "PlayerController",
+    "name": "PlayerInputActions",
     "maps": [
         {
-            "name": "Player",
+            "name": "Gameplay",
             "id": "294dc18f-de6b-437f-97ec-d1f476dd2eda",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "MoveDir",
                     "type": "Value",
                     "id": "2b57e624-a08b-4636-af84-18b8233a08fd",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "a241b2b1-1e42-47f0-8fc9-88a67f812e06",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -24,7 +33,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveDir",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -35,7 +44,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveDir",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -46,7 +55,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveDir",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -57,7 +66,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveDir",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -68,11 +77,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveDir",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "52298dac-7ac8-4032-94a1-03310db33c38",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "af29be92-aadb-45c0-a98e-1c5eb84468f9",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [
