@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
+using Core.Interfaces;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 namespace Player
 {
     [RequireComponent(typeof(CharacterController), typeof(Animator))]
-    public class PlayerView : MonoBehaviour/*, IMoveAble, IDamageAble, IHealAble*/
+    public class PlayerView : MonoBehaviour/*, IMovable, IDamageAble, IHealAble*/
     {
         [SerializeField] private CharacterController characterController;
         [SerializeField] private Animator animator;
@@ -29,9 +30,10 @@ namespace Player
 
         private void Update() => Tick?.Invoke(Time.deltaTime);
         
-        public void Move(Vector3 direction)
+        public void Move(Vector3 direction)=> characterController.Move(direction);
+
+        public void PlayAnimation(string state, float fade, float speed)
         {
-            characterController.Move(direction);
         }
     }
 }
