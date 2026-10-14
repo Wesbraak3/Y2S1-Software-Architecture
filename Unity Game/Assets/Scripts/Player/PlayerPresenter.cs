@@ -38,7 +38,7 @@ namespace Player
             Subscribe();
             
             // Set initial State
-            _stateMachine.ChangeState(Idle);
+            ChangeState(Idle);
         }
 
         public void Dispose()=> Unsubscribe();
