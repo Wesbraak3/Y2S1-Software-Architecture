@@ -10,7 +10,7 @@ namespace Player
     public class PlayerPresenter : IDisposable
     {
         // references to linked resources
-        private readonly InputHandler _input;
+        private readonly InputHandler _inputHandler;
         private readonly PlayerView _view;
         private readonly PlayerModel _model;
         private readonly StateMachine _stateMachine;
@@ -25,7 +25,7 @@ namespace Player
         public PlayerPresenter(InputHandler input, PlayerView playerView, PlayerModel playerModel)
         {
             // Link & Create dependencies
-            _input = input;
+            _inputHandler = input;
             _view = playerView;
             _model = playerModel;
             _stateMachine = new StateMachine();
@@ -58,7 +58,7 @@ namespace Player
             if (dt == 0) return;
             Debug.Log($"CurrentState: {_stateMachine.Current}");
             
-            Intent = _input.BuildIntent();
+            Intent = _inputHandler.BuildIntent();
             _stateMachine.Tick(dt);
         }
         
