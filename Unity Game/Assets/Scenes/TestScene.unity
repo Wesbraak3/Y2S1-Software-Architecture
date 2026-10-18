@@ -340,7 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameBootstrapper
   context: 0
   spawnPlayer: 1
-  playerPrefab: {fileID: 8168569858146337763, guid: d7e5478606dfc154db55a5997416a195, type: 3}
+  playerPrefab: {fileID: 8825726698467520936, guid: d7e5478606dfc154db55a5997416a195, type: 3}
   spawnPoint: {fileID: 874945804}
 --- !u!4 &1674704321
 Transform:

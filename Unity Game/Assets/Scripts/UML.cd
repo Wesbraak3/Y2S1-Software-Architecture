@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Anything thaat uses UnityEngine is decoupled with an interface to make it testable from outside of the unity play mode">
+    <Position X="9.63" Y="1.01" Height="0.785" Width="2.811" />
+  </Comment>
+  <Class Name="Core.Input.InputHandler" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACIAAAAAAAAAAAAAAAAAAAAAQAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\Core\Input\InputHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_instance" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Core.GameBootstrapper">
+    <Position X="7.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAIAAAAAAAAACAAQAAAAACAAAAABAAAAAUA=</HashCode>
+      <FileName>Assets\Scripts\Core\GameBootstrapper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_input" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Core.Services.StateMachine.StateMachine">
+    <Position X="16.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Core\Services\StateMachine\StateMachine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CurrentState" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Entity.Player.States.IdleState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIEAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\Player\States\PlayerStates.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Entity.Player.States.MoveState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIEAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\Player\States\PlayerStates.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Entity.Player.States.AbilityState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIEAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\Player\States\PlayerStates.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Entity.Player.PlayerModel">
+    <Position X="26.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAACAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\Player\PlayerModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.Player.PlayerView">
+    <Position X="30.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\Player\PlayerView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.EntityFactory" Collapsed="true">
+    <Position X="9.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntityFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.EntityModel">
+    <Position X="26.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAACACAAAAAEIABAAAAAAQAACAAggAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntityModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entity.EntityPresenter">
+    <Position X="22.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACAEABgAAgAAAICAAAACCAAAQCAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntityPresenter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_inputSource" />
+      <Field Name="_model" />
+      <Field Name="_stateMachine" />
+      <Field Name="_view" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entity.EntityView">
+    <Position X="30.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAEACoIAAAAAAAAAAAAEAACgAACIKAAAACEAAEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntityView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entity.Player.PlayerPresenter">
+    <Position X="22.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\Player\PlayerPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Core.Input.Intent">
+    <Position X="13.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAEAAAAAAAAAAAAAAAAAAAAAAgQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Core\Input\InputHandler.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="IEntityView">
+    <Position X="28.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAEAAAgAAAAIAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\IEntityView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Core.Services.StateMachine.IState">
+    <Position X="13.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Core\Services\StateMachine\IState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Core.Input.IInputSource">
+    <Position X="18.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\Core\Interfaces\IInputSource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Core.Input.InputContext" Collapsed="true">
+    <Position X="10.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Core\Input\InputHandler.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

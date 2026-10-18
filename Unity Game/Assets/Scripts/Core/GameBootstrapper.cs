@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using Core.Input;
-using Player;
+using Entity.Player;
 
 namespace Core {
     public class GameBootstrapper : MonoBehaviour
@@ -38,8 +38,8 @@ namespace Core {
             if (playerPrefab == null) Debug.LogError("No playerPrefab assigned!");
 
             PlayerView playerView = Instantiate(playerPrefab, transform.position, transform.rotation);
-            PlayerModel playerModel = new PlayerModel();
-            _player = new PlayerPresenter(_input, playerView, playerModel);
+            PlayerModel playerModel = new PlayerModel(5);
+            _player = new PlayerPresenter(playerView, playerModel, _input);
         }
     }
 }

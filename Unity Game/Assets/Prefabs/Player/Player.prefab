@@ -444,9 +444,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 721146273994965277}
-  - component: {fileID: 8423042021758265234}
-  - component: {fileID: 2583124617854448800}
-  - component: {fileID: 8168569858146337763}
+  - component: {fileID: 5135151477598934232}
+  - component: {fileID: 8384612218526374256}
+  - component: {fileID: 8825726698467520936}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -471,32 +471,34 @@ Transform:
   - {fileID: 6649880425842418501}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &8423042021758265234
-CharacterController:
+--- !u!54 &5135151477598934232
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8675349124176993453}
-  m_Material: {fileID: 0}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!95 &2583124617854448800
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!95 &8384612218526374256
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -518,7 +520,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8168569858146337763
+--- !u!114 &8825726698467520936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -529,6 +531,4 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 947bfb796ad24a944a97a747382ebe8a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerView
-  characterController: {fileID: 8423042021758265234}
-  animator: {fileID: 2583124617854448800}
+  m_EditorClassIdentifier: Game::Player.PlayerView
