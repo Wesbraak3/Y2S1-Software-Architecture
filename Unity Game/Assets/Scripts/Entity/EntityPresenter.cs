@@ -6,20 +6,21 @@ namespace Entity
 {
     public abstract class EntityPresenter : IDisposable
     {
-        private readonly IInputSource _inputSource;
-
         protected readonly EntityModel _model;
         protected readonly IEntityView _view;
+
         protected readonly StateMachine _stateMachine;
 
+        private readonly IInputSource _inputSource;
         protected Intent Intent { get; private set; }
 
         protected EntityPresenter(IEntityView entityView, IInputSource inputSource, EntityModel entityModel)
         {
             // Link & Create dependencies
-            _view = entityView;
             _inputSource = inputSource;
+            _view = entityView;
             _model = entityModel;
+
             _stateMachine = new StateMachine();
 
             // Subscribe to events

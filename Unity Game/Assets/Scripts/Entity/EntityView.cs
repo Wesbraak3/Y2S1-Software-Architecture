@@ -10,11 +10,10 @@ namespace Entity
         protected Rigidbody _rigidbody;
         protected Animator _animator;
 
-        [Header("Movement")]
         [SerializeField] private float _moveForce = 30f;
         [SerializeField] private float _maxSpeed = 5f;
         [SerializeField] private float _moveSpeed = 5f;
-        private Vector2 _velocity;
+
         private Vector2 _moveInput;
 
         public event Action<float> OnUpdate;
@@ -28,8 +27,7 @@ namespace Entity
 
             _rigidbody.isKinematic = false;
             _rigidbody.useGravity = true;
-            _rigidbody.constraints |= RigidbodyConstraints.FreezeRotationX
-                                   | RigidbodyConstraints.FreezeRotationZ;
+            _rigidbody.constraints |= RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
             _animator.applyRootMotion = false;
         }
@@ -57,9 +55,9 @@ namespace Entity
             Vector3 currentVelocity = _rigidbody.linearVelocity;
 
             _rigidbody.linearVelocity = new Vector3(
-                direction.x * _moveSpeed,
-                currentVelocity.y,
-                direction.z * _moveSpeed
+                _moveInput.x,
+                0,
+                _moveInput.y
             );
 
             Debug.Log($"Rigidbody velocity: {_rigidbody.linearVelocity}");

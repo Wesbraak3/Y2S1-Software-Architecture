@@ -532,3 +532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947bfb796ad24a944a97a747382ebe8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Player.PlayerView
+  _moveForce: 30
+  _maxSpeed: 5
+  _moveSpeed: 5
