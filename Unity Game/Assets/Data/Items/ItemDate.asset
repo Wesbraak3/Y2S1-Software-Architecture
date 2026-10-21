@@ -10,5 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c482788639a64736a57996dbee5b6427, type: 3}
-  m_Name: NewScriptableObjectScript
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.ItemData
+  m_Name: ItemDate
+  m_EditorClassIdentifier: Game::Inventory.ItemData
+  itemName: 
+  description: 
+  rarity: 0
+  itemType: 0
+  maxStack: 1
+  itemIcon: {fileID: 0}
+  itemPrefab: {fileID: 0}
+  damage: 0
+  armor: 0
+  magicResist: 0
+  strength: 0
+  dexterity: 0
+  intelligence: 0
+  wisdom: 0
