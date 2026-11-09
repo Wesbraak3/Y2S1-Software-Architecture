@@ -8,8 +8,6 @@ namespace Inventory {
 
         public ItemData itemData;
 
-
-        [ContextMenuItem("naem")]
         public void AddItem() {
             _items.Add(itemData.CreateItem());
         }
