@@ -13,8 +13,7 @@ namespace Core {
         [SerializeField] private bool spawnPlayer = true;
         
         [Header("Player Settings")]
-        [SerializeField] private PlayerView playerPrefab;
-        // [SerializeField] private PlayerSaveData saveData;
+        [SerializeField] private GameObject playerPrefab;
         [SerializeField] private Transform spawnPoint;
 
         private PlayerPresenter _player;
@@ -37,9 +36,11 @@ namespace Core {
             Debug.Log("Spawning Player");
             if (playerPrefab == null) Debug.LogError("No playerPrefab assigned!");
 
-            PlayerView playerView = Instantiate(playerPrefab, transform.position, transform.rotation);
-            PlayerModel playerModel = new PlayerModel(5);
-            _player = new PlayerPresenter(playerView, playerModel, _input);
+            GameObject playerObject = Instantiate(playerPrefab, transform.position, transform.rotation);
+            PlayerModel playerModel = new(5);
+            IEntityView entityView = playerObject.GetComponentInChildren<IEntityView>();
+            Debug.Log(entityView);
+            _player = new PlayerPresenter(entityView, playerModel);
         }
     }
 }

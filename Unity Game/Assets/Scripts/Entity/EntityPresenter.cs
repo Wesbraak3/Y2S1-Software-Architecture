@@ -1,23 +1,21 @@
 ﻿using Core.Input;
 using Core.Services.StateMachine;
+using Entity.Player.States;
 using System;
 
 namespace Entity
 {
     public abstract class EntityPresenter : IDisposable
     {
-        protected readonly EntityModel _model;
-        protected readonly IEntityView _view;
+        public readonly EntityModel _model;
+        public readonly IEntityView _view;
 
-        protected readonly StateMachine _stateMachine;
+        public readonly StateMachine _stateMachine;
 
-        private readonly IInputSource _inputSource;
-        protected Intent Intent { get; private set; }
-
-        protected EntityPresenter(IEntityView entityView, IInputSource inputSource, EntityModel entityModel)
+        public Intent Intent { get; private set; }
+        protected EntityPresenter(IEntityView entityView, EntityModel entityModel)
         {
             // Link & Create dependencies
-            _inputSource = inputSource;
             _view = entityView;
             _model = entityModel;
 
@@ -26,39 +24,29 @@ namespace Entity
             // Subscribe to events
             Subscribe();
         }
-
-        protected abstract void OnTick(float deltaTime);
+        private void UpdateIntent(Intent intent) => Intent = intent;
         protected abstract void OnDeath();
 
-        private void HandleUpdate(float deltaTime)
-        {
-            Intent = _inputSource.BuildIntent();
-            OnTick(deltaTime);
+        private void OnUpdate(float deltaTime) {
             _stateMachine.Tick(deltaTime);
         }
-
-        protected void Subscribe()
-        {
-            _view.OnUpdate += HandleUpdate;
-
-            _model.HasDied += OnDeath;
+        protected void Subscribe() {
+            _view.OnIntent += UpdateIntent;
+            _view.OnUpdate += OnUpdate;
+            _model.OnDeath += OnDeath;
         }
-        
-        protected void Unsubscribe()
-        {
-            _view.OnUpdate -= HandleUpdate;
-
-            _model.HasDied -= OnDeath;
+        protected void Unsubscribe() {
+            _view.OnIntent -= UpdateIntent;
+            _view.OnUpdate -= OnUpdate;
+            _model.OnDeath -= OnDeath;
         }
 
         private bool _isDisposed = false;
-        public void Dispose()
-        {
+        public void Dispose() {
             if (_isDisposed) return;
             _isDisposed = true;
             
             Unsubscribe();
-            _view.PlayDeath();
         }
     }
 }

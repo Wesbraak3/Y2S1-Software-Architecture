@@ -10,7 +10,7 @@ namespace Entity
             PlayerModel playerModel = new(5);
             PlayerView playerView = new();
 
-            return new PlayerPresenter(playerView, playerModel, InputHandler.Instance);
+            return new PlayerPresenter(playerView, playerModel);
         }
     }
 }

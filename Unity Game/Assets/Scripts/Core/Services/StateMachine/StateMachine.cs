@@ -1,14 +1,24 @@
-﻿namespace Core.Services.StateMachine
+﻿using Entity.Player.States;
+using System.Diagnostics;
+
+namespace Core.Services.StateMachine
 {
     public class StateMachine
     {
         public IState CurrentState { get; private set; }
 
-        public void ChangeState(IState nextState)
+        public void ChangeState(IState newState)
         {
-            if (nextState == CurrentState) return;
+            if (CurrentState?.GetType() == newState.GetType()) {
+                Debug.Assert(
+                    CurrentState?.GetType() != newState.GetType(),
+                    $"Cannot transition from {CurrentState?.GetType().Name} to {newState.GetType().Name}: Already in this state."
+                );
+                return;
+            }
+
             CurrentState?.Exit();
-            CurrentState = nextState;
+            CurrentState = newState;
             CurrentState?.Enter();
         }
         

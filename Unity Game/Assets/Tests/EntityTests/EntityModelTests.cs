@@ -32,7 +32,7 @@ public class EntityModelTests
     public void DiedFiresOnceWhenHealthIsZero()
     {
         int _diedEventFired = 0;
-        _model.HasDied += () => _diedEventFired++;
+        _model.OnDeath += () => _diedEventFired++;
 
         _model.TakeDamage(_playerMaxHealth);
         _model.TakeDamage(_playerMaxHealth);

@@ -1,14 +1,14 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Core.Input
 {
     public struct Intent
     {
         public Vector2 MoveDirection;
+        public Vector2 LookDir;
         public bool SprintPressed;
-        public bool AttackPressed;
-        public bool DashPressed;
     }
     
     public enum InputContext { Gameplay, UI }
@@ -23,7 +23,8 @@ namespace Core.Input
     /// </summary>
     /// <remarks>Access the instance through InputHandler.Instance. Call Dispose to disable and dispose the
     /// underlying PlayerInputActions and clear the singleton. Use SetContext to switch action maps between Gameplay and
-    /// UI; BuildIntent samples the current gameplay inputs into an Intent.</remarks>
+    /// UI; BuildIntent samples the current gameplay inputs into an Intent.
+    /// </remarks>
     public sealed class InputHandler : IDisposable, IInputSource
     {
         private static InputHandler _instance;
@@ -62,17 +63,30 @@ namespace Core.Input
         /// one-frame attack and dash triggers).</returns>
         public Intent BuildIntent()
         {
-            var intent = new Intent
-            {
+            var intent = new Intent {
                 MoveDirection = _input.Gameplay.MoveDir.ReadValue<Vector2>(),
-                SprintPressed = _input.Gameplay.Sprint.IsPressed(),
-                AttackPressed = _input.Gameplay.Attack.WasPressedThisFrame(),
-                DashPressed = _input.Gameplay.Dash.WasPressedThisFrame()
+                LookDir = Mouse.current != null
+                    ? GetMouseWorldPosition()
+                    : Vector2.zero,
+                SprintPressed = _input.Gameplay.Sprint.IsPressed()
             };
-
             return intent;
         }
-        
+        private Vector2 GetMouseWorldPosition() {
+            if (Mouse.current == null || Camera.main == null)
+                return Vector2.zero;
+
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+            int groundLayer = LayerMask.GetMask("Ground");
+
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer)) {
+                return new Vector2(hit.point.x, hit.point.z);
+            }
+
+            return Vector2.zero;
+        }
+
         /// <summary>
         /// Sets the active input context and enables the corresponding input actions.
         /// </summary>

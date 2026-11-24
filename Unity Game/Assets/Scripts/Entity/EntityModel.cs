@@ -8,9 +8,9 @@ namespace Entity
     {
         public int MaxHealth { get; private set; }
         public int Health { get; private set; }
-        public float Speed { get; protected set; } = 1f;
+        public float Speed { get; protected set; } = 5f;
 
-        public event Action HasDied;
+        public event Action OnDeath;
 
         protected EntityModel(int maxHealth)
         {
@@ -23,9 +23,10 @@ namespace Entity
 
         public bool IsDead() => Health <= 0;
 
-        public Vector2 CalculateDisplacement(Vector2 direction)
-        {
-            return Vector2.Normalize(direction) * Speed;
+
+        public Vector2 CalculateDisplacement(Vector2 direction, float deltaTime)
+        {            
+            return Vector2.Normalize(direction) * Speed * deltaTime;
         }
 
         public void SetHealth(int health)
@@ -45,8 +46,8 @@ namespace Entity
             if (Health <= 0)
             {
                 Health = 0;
-                HasDied?.Invoke();
-                OnDeath();
+                OnDeath?.Invoke();
+                HandleDeath();
             }
         }
 
@@ -61,7 +62,7 @@ namespace Entity
 
 
 
-        protected abstract void OnDeath();
+        protected abstract void HandleDeath();
 
         public void Dispose()
         {

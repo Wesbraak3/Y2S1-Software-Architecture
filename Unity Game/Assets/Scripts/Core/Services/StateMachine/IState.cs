@@ -1,9 +1,12 @@
-﻿namespace Core.Services.StateMachine
+﻿using Entity;
+using Entity.Player;
+
+namespace Core.Services.StateMachine
 {
     public interface IState
     {
-        void Enter(); 
-        void Tick(float dt); 
+        void Enter();
+        void Tick(float dt);
         void Exit();
     }
 }

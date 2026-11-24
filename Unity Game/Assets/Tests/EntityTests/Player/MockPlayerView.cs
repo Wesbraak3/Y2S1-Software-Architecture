@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Input;
+using System;
 using UnityEngine;
 
 namespace Assets.Tests.EntityTests.Player
@@ -6,10 +7,15 @@ namespace Assets.Tests.EntityTests.Player
     internal class MockPlayerView : IEntityView
     {
         public event Action<float> OnUpdate;
-        public event Action OnCollision; 
+        public event Action OnCollision;
+        public event Action<Intent> OnIntent;
 
         public void Move(Vector2 velocity)
         {
+            throw new NotImplementedException();
+        }
+
+        public void Move(Vector3 velocity) {
             throw new NotImplementedException();
         }
 

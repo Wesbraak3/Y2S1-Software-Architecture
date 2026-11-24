@@ -2,23 +2,18 @@ using Core.Input;
 using UnityEngine;
 
 using Entity.Player.States;
+using Core.Services.StateMachine;
 
 namespace Entity.Player
 {
     public class PlayerPresenter : EntityPresenter
     {
-        public PlayerPresenter(IEntityView entityView, EntityModel entityModel, IInputSource inputSource) : base(entityView, inputSource, entityModel)
-        {
-        }
-
-        protected override void OnTick(float deltaTime)
-        {
-            _view.Move(_model.CalculateDisplacement(Intent.MoveDirection));
-        }
-
+        public PlayerPresenter(IEntityView entityView, EntityModel entityModel) : base(entityView, entityModel)
+        { 
+            _stateMachine.ChangeState(new IdleState(this));
+        } 
         protected override void OnDeath()
         {
-            _view.PlayDeath();
         }
     }
 }

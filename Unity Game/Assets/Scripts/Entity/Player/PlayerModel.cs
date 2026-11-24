@@ -9,10 +9,8 @@ namespace Entity.Player
         {
         }
 
-        protected override void OnDeath()
+        protected override void HandleDeath()
         {
-            // respawn
-            // Show game over screen
         }
     }
 }
