@@ -1,8 +1,4 @@
-using Core.Input;
-using UnityEngine;
-
 using Entity.Player.States;
-using Core.Services.StateMachine;
 
 namespace Entity.Player
 {
@@ -10,8 +6,8 @@ namespace Entity.Player
     {
         public PlayerPresenter(IEntityView entityView, EntityModel entityModel) : base(entityView, entityModel)
         { 
-            _stateMachine.ChangeState(new IdleState(this));
-        } 
+            _stateMachine.SetState(new IdleState(this));
+        }
         protected override void OnDeath()
         {
         }

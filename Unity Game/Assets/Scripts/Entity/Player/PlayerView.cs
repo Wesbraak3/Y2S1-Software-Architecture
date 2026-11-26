@@ -1,8 +1,4 @@
-
-
 using Core.Input;
-using JetBrains.Annotations;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 namespace Entity.Player {
@@ -19,7 +15,6 @@ namespace Entity.Player {
             InputSource = InputHandler.Instance;
         }
         protected override void Move(Vector2 velocity) {
-            Debug.Log($"Moving charecter by {velocity}");
             _characterController.Move(new(velocity.x, 0, velocity.y));
         }
     }

@@ -11,7 +11,7 @@ namespace Entity
         public readonly IEntityView _view;
 
         public readonly StateMachine _stateMachine;
-
+        public EntityInformation EntityInformation { get; private set; }
         public Intent Intent { get; private set; }
         protected EntityPresenter(IEntityView entityView, EntityModel entityModel)
         {
@@ -24,19 +24,18 @@ namespace Entity
             // Subscribe to events
             Subscribe();
         }
-        private void UpdateIntent(Intent intent) => Intent = intent;
         protected abstract void OnDeath();
 
-        private void OnUpdate(float deltaTime) {
+        private void OnUpdate(float deltaTime, Intent intent, EntityInformation entityInformation) {
+            Intent = intent;
+            EntityInformation = entityInformation;
             _stateMachine.Tick(deltaTime);
         }
         protected void Subscribe() {
-            _view.OnIntent += UpdateIntent;
             _view.OnUpdate += OnUpdate;
             _model.OnDeath += OnDeath;
         }
         protected void Unsubscribe() {
-            _view.OnIntent -= UpdateIntent;
             _view.OnUpdate -= OnUpdate;
             _model.OnDeath -= OnDeath;
         }

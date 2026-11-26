@@ -7,7 +7,7 @@ namespace Core.Input
     public struct Intent
     {
         public Vector2 MoveDirection;
-        public Vector2 LookDir;
+        public Vector3 LookAtPosition;
         public bool SprintPressed;
     }
     
@@ -29,7 +29,7 @@ namespace Core.Input
     {
         private static InputHandler _instance;
         private readonly PlayerInputActions _input;
-
+        private static readonly int GroundMask = LayerMask.GetMask("Ground");
         private InputHandler()
         {
             _input = new PlayerInputActions();
@@ -65,26 +65,24 @@ namespace Core.Input
         {
             var intent = new Intent {
                 MoveDirection = _input.Gameplay.MoveDir.ReadValue<Vector2>(),
-                LookDir = Mouse.current != null
+                LookAtPosition = _input.Gameplay.LookDir.IsPressed()
                     ? GetMouseWorldPosition()
-                    : Vector2.zero,
+                    : Vector3.zero,
                 SprintPressed = _input.Gameplay.Sprint.IsPressed()
             };
             return intent;
         }
-        private Vector2 GetMouseWorldPosition() {
+        private Vector3 GetMouseWorldPosition() {
             if (Mouse.current == null || Camera.main == null)
-                return Vector2.zero;
+                return Vector3.zero;
 
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-            int groundLayer = LayerMask.GetMask("Ground");
-
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer)) {
-                return new Vector2(hit.point.x, hit.point.z);
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, GroundMask)) {
+                return new Vector3(hit.point.x, hit.point.z);
             }
 
-            return Vector2.zero;
+            return Vector3.zero;
         }
 
         /// <summary>

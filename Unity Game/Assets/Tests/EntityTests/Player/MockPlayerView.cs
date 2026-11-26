@@ -8,7 +8,7 @@ namespace Assets.Tests.EntityTests.Player
     {
         public event Action<float> OnUpdate;
         public event Action OnCollision;
-        public event Action<Intent> OnIntent;
+        public event Action<Intent> UpdateIntent;
 
         public void Move(Vector2 velocity)
         {
